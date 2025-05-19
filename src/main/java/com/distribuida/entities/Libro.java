@@ -1,6 +1,6 @@
 package com.distribuida.entities;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Libro {
 
@@ -10,7 +10,7 @@ public class Libro {
     private int numPaginas;
     private String edicion;
     private String idioma;
-    private Date fechaPublicacion;
+    private LocalDate fechaPublicacion;
     private String descripcion;
     private String tipoPasta;
     private String ISBN;
@@ -25,7 +25,7 @@ public class Libro {
     public Libro() {
     }
 
-    public Libro(int idLibro, String titulo, String editorial, int numPaginas, String edicion, String idioma, Date fechaPublicacion, String descripcion, String tipoPasta, String ISBN, int numEjemplares, String portada, String presentacion, Double precio, Categoria categoria, Autor autor) {
+    public Libro(int idLibro, String titulo, String editorial, int numPaginas, String edicion, String idioma, LocalDate fechaPublicacion, String descripcion, String tipoPasta, String ISBN, int numEjemplares, String portada, String presentacion, Double precio, Categoria categoria, Autor autor) {
         this.idLibro = idLibro;
         this.titulo = titulo;
         this.editorial = editorial;
@@ -92,11 +92,11 @@ public class Libro {
         this.idioma = idioma;
     }
 
-    public Date getFechaPublicacion() {
+    public LocalDate getFechaPublicacion() {
         return fechaPublicacion;
     }
 
-    public void setFechaPublicacion(Date fechaPublicacion) {
+    public void setFechaPublicacion(LocalDate fechaPublicacion) {
         this.fechaPublicacion = fechaPublicacion;
     }
 
