@@ -1,5 +1,4 @@
 package com.distribuida.entities;
-
 import java.time.LocalDate;
 
 public class Libro {

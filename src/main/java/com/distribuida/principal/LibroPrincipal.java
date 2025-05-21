@@ -1,5 +1,4 @@
 package com.distribuida.principal;
-
 import com.distribuida.entities.Libro;
 import com.distribuida.entities.Categoria;
 import com.distribuida.entities.Autor;
