@@ -3,11 +3,16 @@ import com.distribuida.entities.Cliente;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+
 public class ClienteTest {
     
-    private Cliente cliente;    @BeforeEach
-    public void setuo(){        cliente =
-            new Cliente(1,"1788430215", "Karlos", "Taipe", "Av. infinito y mas alla", "0975441236", "correo@gmail.com");    }    @Test
+    private Cliente cliente;
+
+    @BeforeEach
+    public void setup(){cliente = new Cliente(1,"1788430215", "Karlos", "Taipe", "Av. infinito y mas alla", "0975441236", "correo@gmail.com");
+    }
+
+    @Test
     public void testClienteConstructorAndGetters(){
         assertAll("Validar datos Cliente, Constructor y Getters",
                 () -> assertEquals(1, cliente.getIdCliente()),
