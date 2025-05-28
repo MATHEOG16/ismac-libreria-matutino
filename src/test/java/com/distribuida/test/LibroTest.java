@@ -1,3 +1,5 @@
+package com.distribuida.test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 import com.distribuida.entities.Autor;
