@@ -4,7 +4,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="libreria-spring" options="-parameters" />
       <module name="libreria-spring.main" options="-parameters" />
-      <module name="libreria-spring.test" options="-parameters" />
+      <module name="libreria-spring.test" options="-parameters --add-exports java.base/jdk.internal.org.objectweb.asm.util=ALL-UNNAMED" />
     </option>
   </component>
 </project>

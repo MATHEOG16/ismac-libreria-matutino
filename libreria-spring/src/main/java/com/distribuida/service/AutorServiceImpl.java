@@ -20,7 +20,7 @@ public class AutorServiceImpl implements AutorService{
     @Override
     public Autor findOne(int id) {
         Optional<Autor> autor = autorRepository.findById(id);
-        return null;
+        return autor.orElse(null);
     }
 
     @Override

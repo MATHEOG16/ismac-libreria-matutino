@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public abstract class CategoriaServiceImpl implements CategoriaService{
+public class CategoriaServiceImpl implements CategoriaService{
 
     @Autowired
     private CategoriaRepository categoriaRepository;
@@ -21,8 +21,9 @@ public abstract class CategoriaServiceImpl implements CategoriaService{
     @Override
     public Categoria findOne(int id) {
         Optional<Categoria> categoria = categoriaRepository.findById(id);
-        return null;
+        return categoria.orElse(null);
     }
+
 
     @Override
     public Categoria save(Categoria categoria) {

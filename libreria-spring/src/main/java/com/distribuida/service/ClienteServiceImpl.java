@@ -11,7 +11,7 @@ import java.util.Optional;
 // Aqui se gestiona la logica de negocio
 
 @Service
-public abstract class ClienteServiceImpl implements ClienteService{
+public class ClienteServiceImpl implements ClienteService{
     @Autowired // inyeccion de dependencias
     private ClienteRepository clienteRepository;
 
@@ -22,12 +22,13 @@ public abstract class ClienteServiceImpl implements ClienteService{
 
     @Override
     public Cliente findOne(int id) {
-        Optional<Cliente> cliente = clienteRepository.findById(id);
-        return null;
+        return clienteRepository.findById(id).orElse(null);
     }
+
 
     @Override
     public Cliente save(Cliente cliente) {
+
         return clienteRepository.save(cliente);
     }
 
