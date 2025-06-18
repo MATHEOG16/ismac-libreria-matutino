@@ -4,8 +4,9 @@ import com.distribuida.model.Autor;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-//@Repository
+@Repository
 public interface AutorRepository extends JpaRepository<Autor, Integer> {
-    default Autor findByPais(String autor) {return null;}
-
+    // Esto genera automáticamente una consulta por el campo 'pais'
+    Autor findByPais(String pais);
 }
+
