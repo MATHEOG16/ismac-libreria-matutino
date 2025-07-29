@@ -1,0 +1,18 @@
+task runAllTests {
+	description = 'Ejecuta todos los tests de los subproyectos'
+	group = 'verification'
+
+	doFirst {
+		println "Ejecutando tests en todos los subproyectos..."
+	}
+
+	subprojects.each { project ->
+		def testTask = project.tasks.findByName('test')
+		if (testTask != null) {
+			dependsOn testTask
+		}
+	}
+}
+
+
+
