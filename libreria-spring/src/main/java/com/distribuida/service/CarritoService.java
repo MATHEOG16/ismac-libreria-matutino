@@ -11,7 +11,7 @@ public interface CarritoService {
     void clear(int clienteId);
     Carrito getByClienteId(int clienteId);
 
-    Carrito getOrCreateByToken(int clienteId, String token);
+    Carrito getOrCreateByToken(String token);
     Carrito addItem(String token, int libroId, int cantidad);
     Carrito updateItemCantidad(String token, long carritoItemId, int nuevaCantidad);
     void removeItem(String token, long carritoItemId);

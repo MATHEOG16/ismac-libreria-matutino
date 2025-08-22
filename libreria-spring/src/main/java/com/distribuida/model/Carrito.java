@@ -65,7 +65,7 @@ public class Carrito {
         actualizadoEn = java.time.LocalDateTime.now();
     }
 
-    public void recomprobacionTotalesCompat(){
+    public void recomprobacionTotalesCompat(BigDecimal iva){
 
         if (subtotal == null) subtotal = BigDecimal.ZERO;
         if (descuento == null) descuento = BigDecimal.ZERO;
