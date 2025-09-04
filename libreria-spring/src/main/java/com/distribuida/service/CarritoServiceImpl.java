@@ -167,30 +167,39 @@ public class CarritoServiceImpl implements CarritoService{
     @Override
     @Transactional
     public Carrito addItem(String token, int libroId, int cantidad) {
-
         if (cantidad <= 0) throw new IllegalArgumentException("Cantidad debe ser > 0");
+
         var carrito = getOrCreateByToken(token);
+
         var libro = libroRepository.findById(libroId)
                 .orElseThrow(() -> new IllegalArgumentException("Libro no encontrado: " + libroId));
+
         var itemOpt = carritoItemRepository.findByCarritoAndLibro(carrito, libro);
-        if (itemOpt.isPresent()){
+
+        if (itemOpt.isPresent()) {
             var item = itemOpt.get();
             item.setCantidad(item.getCantidad() + cantidad);
             item.setPrecioUnitario(BigDecimal.valueOf(libro.getPrecio()));
             item.calcTotal();
             carritoItemRepository.save(item);
-        }else {
+        } else {
             var item = new CarritoItem();
             item.setCarrito(carrito);
             item.setLibro(libro);
             item.setCantidad(cantidad);
             item.setPrecioUnitario(BigDecimal.valueOf(libro.getPrecio()));
             item.calcTotal();
+
+            carritoItemRepository.save(item);
+
             carrito.getItems().add(item);
         }
+
         carrito.recomputarTotales(IVA);
+
         return carritoRepository.save(carrito);
     }
+
 
     @Override
     @Transactional

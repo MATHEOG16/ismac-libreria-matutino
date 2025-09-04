@@ -44,13 +44,21 @@ export class CarritoComponent implements OnInit {
     });
   }
 
-  updateCantidad(idItem: number, cantidad: number){
-    if(cantidad < 0 ) return;
-    this.carritoService.updateItem(idItem, cantidad).subscribe({
-      next: c => {this.carrito = c; this.snack.open('Cantidad actualizada','OK',{ duration: 1200})},
-      error: err => Swal.fire('Error', err?.error?.message || 'No se puede actualizar', 'error')
+  updateCantidad(itemId: number, nuevaCantidad: any) {
+    const cantidadNum = Number(nuevaCantidad);
+
+    if (isNaN(cantidadNum) || cantidadNum <= 0) {
+      console.error("Cantidad inválida");
+      return;
+    }
+
+    this.carritoService.updateItem(itemId, cantidadNum).subscribe({
+      next: carrito => this.carrito = carrito,
+      error: err => console.error("Error actualizando la cantidad:", err)
     });
   }
+
+
 
   remove(idItem: number){
     Swal.fire({ 

@@ -30,20 +30,48 @@ public class CarritoGuestController {
     }
 
     @PostMapping("/items")
-    public ResponseEntity<Carrito> addItem(@RequestParam String token, @RequestBody Map<String, Integer> body){
-        int libroId = body.getOrDefault("libroId", 0);
-        int cantidad = body.getOrDefault("cantidad", 0);
+    public ResponseEntity<Carrito> addItem(@RequestParam String token, @RequestBody Map<String, Object> body) {
+        Object libroIdObj = body.get("libroId");
+        Object cantidadObj = body.get("cantidad");
+
+        if (libroIdObj == null || cantidadObj == null) {
+            throw new IllegalArgumentException("Faltan parámetros obligatorios: libroId o cantidad");
+        }
+
+        int libroId;
+        int cantidad;
+
+        try {
+            libroId = Integer.parseInt(libroIdObj.toString());
+            cantidad = Integer.parseInt(cantidadObj.toString());
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("Parámetros inválidos: deben ser números enteros");
+        }
+
         return ResponseEntity.ok(carritoService.addItem(token, libroId, cantidad));
     }
+
 
     @PutMapping("/items/{carritoItemId}")
     public ResponseEntity<Carrito> update(@RequestParam String token,
                                           @PathVariable long carritoItemId,
-                                          @RequestBody Map<String, Integer> body
-                                          ){
-        int cantidad = body.getOrDefault("cantidad", 0);
+                                          @RequestBody Map<String, Object> body) {
+        Object cantidadObj = body.get("cantidad");
+
+        if (cantidadObj == null) {
+            throw new IllegalArgumentException("Falta el parámetro obligatorio: cantidad");
+        }
+
+        int cantidad;
+        try {
+            cantidad = Integer.parseInt(cantidadObj.toString());
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("Parámetro inválido: cantidad debe ser un número entero");
+        }
+
         return ResponseEntity.ok(carritoService.updateItemCantidad(token, carritoItemId, cantidad));
     }
+
 
     @DeleteMapping("/items/{carritoItemId}")
     public ResponseEntity<Void> remove(@RequestParam String token, @PathVariable long carritoItemId){

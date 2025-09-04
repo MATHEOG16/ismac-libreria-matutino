@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { GuesCheckout } from './gues-checkout';
+import { GuesCheckoutService } from './gues-checkout';
 
-describe('GuesCheckout', () => {
-  let service: GuesCheckout;
+describe('GuesCheckoutService', () => {
+  let service: GuesCheckoutService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(GuesCheckout);
+    service = TestBed.inject(GuesCheckoutService);
   });
 
   it('should be created', () => {
