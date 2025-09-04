@@ -8,14 +8,16 @@ import { ClienteComponent } from './components/cliente/cliente';
 import { LibroComponent } from './components/libro/libro';
 
 const routes: Routes = [ 
-  {path: '', redirectTo:'libros1', pathMatch:'full'},
-  {path: 'libros1', component: LibrosListComponent},
-  {path: 'carrito', component: CarritoComponent},
-  {path: 'categoiras', component:CategoriaComponent},
-  {path: 'autores', component: AutorComponent},
-  {path: 'clientes', component: ClienteComponent},
-  {path: 'libro', component: LibroComponent}
- ];
+  { path: '', redirectTo: 'libros1', pathMatch: 'full' },
+  { path: 'libros1', component: LibrosListComponent },
+  { path: 'carrito', component: CarritoComponent },
+  { path: 'categorias', component: CategoriaComponent },
+  { path: 'autores', component: AutorComponent },
+  { path: 'clientes', component: ClienteComponent },
+  { path: 'libro', component: LibroComponent },
+  { path: '**', redirectTo: 'libros1' }
+];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

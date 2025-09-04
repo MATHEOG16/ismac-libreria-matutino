@@ -51,7 +51,7 @@ public class Libro {
     }
 
     public Libro(int idLibro, String titulo, String editorial, int numPaginas, String edicion, String idioma, Date fechaPublicacion, String descripcion, String tipoPasta, String ISBN, int numEjemplares, String portada, String presentacion, Double precio, Categoria categoria, Autor autor) {
-        this.id = id;
+        this.id = idLibro;
         this.titulo = titulo;
         this.editorial = editorial;
         this.numPaginas = numPaginas;

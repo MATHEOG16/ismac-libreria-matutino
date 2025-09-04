@@ -27,8 +27,12 @@ export class CarritoComponent implements OnInit {
     }
 
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
-  }
+  this.carritoService.get().subscribe({
+    next: (carrito) => this.carrito = carrito,
+    error: (err) => console.error('Error cargando el carrito', err)
+  });
+}
+
 
 
   reload(){

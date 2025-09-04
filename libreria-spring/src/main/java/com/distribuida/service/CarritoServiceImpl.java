@@ -151,15 +151,18 @@ public class CarritoServiceImpl implements CarritoService{
     @Override
     @Transactional
     public Carrito getOrCreateByToken(String token) {
-
-        var c = new Carrito();
-        c.setToken(token);
-        c.setSubtotal(BigDecimal.ZERO);
-        c.setDescuento(BigDecimal.ZERO);
-        c.setImpuestos(BigDecimal.ZERO);
-        c.setTotal(BigDecimal.ZERO);
-        return carritoRepository.save(c);
+        return carritoRepository.findByToken(token)
+                .orElseGet(() -> {
+                    var c = new Carrito();
+                    c.setToken(token);
+                    c.setSubtotal(BigDecimal.ZERO);
+                    c.setDescuento(BigDecimal.ZERO);
+                    c.setImpuestos(BigDecimal.ZERO);
+                    c.setTotal(BigDecimal.ZERO);
+                    return carritoRepository.save(c);
+                });
     }
+
 
     @Override
     @Transactional

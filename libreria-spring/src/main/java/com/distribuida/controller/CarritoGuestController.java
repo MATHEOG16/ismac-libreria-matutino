@@ -18,9 +18,11 @@ public class CarritoGuestController {
         this.carritoService = carritoService;
     }
 
-    public ResponseEntity<Carrito> createOrGet(@RequestParam String token){
+    @PostMapping
+    public ResponseEntity<Carrito> createOrGet(@RequestParam String token) {
         return ResponseEntity.ok(carritoService.getOrCreateByToken(token));
     }
+
 
     @GetMapping
     public ResponseEntity<Carrito> get(@RequestParam String token){
